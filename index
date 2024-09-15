@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online HTML Editor</title>
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            margin: 0;
+        }
+        textarea, iframe {
+            width: 50%;
+            height: 100%;
+            border: none;
+        }
+        textarea {
+            padding: 10px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <textarea id="editor" placeholder="Write your HTML code here"></textarea>
+    <iframe id="preview"></iframe>
+
+    <script>
+        const editor = document.getElementById('editor');
+        const preview = document.getElementById('preview').contentWindow.document;
+
+        editor.addEventListener('input', () => {
+            preview.open();
+            preview.write(editor.value);
+            preview.close();
+        });
+    </script>
+</body>
+</html>
