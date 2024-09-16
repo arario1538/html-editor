@@ -261,15 +261,142 @@ function copyBasicText() {
 }
 
 
-    // 변환된 텍스트를 클립보드에 복사하는 기능
-    function copyTransformedText() {
-        const transformedText = "<한글로 번역해서 행열을 바꾼 후 아래 html 코드에 데이터값 반영해서 html 코드로 작성해줘. 표 하단에 ⚠️ 사이즈 단위는 CM이며, 측정 방식에 따라 1~3cm 오차가 있을 수 있으며 이는 정상 범위에 해당합니다 라는 취지의 문구를 왼쪽 정렬로 하여 넣어줘. 표안에 cm는 넣지 말아줘.>";
-        navigator.clipboard.writeText(transformedText).then(function() {
-            alert('변환된 문구가 클립보드에 복사되었습니다.');
-        }, function() {
-            alert('클립보드 복사에 실패했습니다.');
-        });
-    }
+// 변환된 텍스트를 클립보드에 복사하는 기능
+function copyTransformedText() {
+    const transformedText = `첨부 이미지를 한글로 번역해서 행열을 바꾼 후 아래 html 코드에 데이터값 반영해서 html 코드로 작성해줘. 표 하단에 ⚠️ 사이즈 단위는 CM이며, 측정 방식에 따라 1~3cm 오차가 있을 수 있으며 이는 정상 범위에 해당합니다 라는 취지의 문구를 왼쪽 정렬로 하여 넣어줘. 표안에 cm는 넣지 말아줘.  
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사이즈 차트</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffffff; /* 배경색 흰색 */
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            text-align: center;
+            color: #ff6600; /* 포인트 오렌지 컬러 */
+            font-size: 2.5em;
+            margin-top: 40px;
+            font-weight: bold;
+        }
+        table {
+            width: 80%;
+            margin: 50px auto;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        th, td {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        th {
+            background-color: #ff6600; /* 헤더 색상을 오렌지 계열로 설정 */
+            color: #ffffff;
+            font-size: 1.3em;
+        }
+        tr:nth-child(even) {
+            background-color: #ffe0b2; /* 짝수 행에 연한 오렌지 배경 */
+        }
+        tr:nth-child(odd) {
+            background-color: #fff3e0; /* 홀수 행에 더 연한 오렌지 배경 */
+        }
+        tr:hover {
+            background-color: #ffcc80; /* 마우스 오버 시 연한 오렌지로 강조 */
+            transition: all 0.3s ease-in-out;
+        }
+        td {
+            font-size: 1.2em;
+            color: #555555;
+        }
+        td:first-child, th:first-child {
+            border-top-left-radius: 12px;
+        }
+        td:last-child, th:last-child {
+            border-top-right-radius: 12px;
+        }
+        @media (max-width: 768px) {
+            table {
+                width: 90%;
+            }
+            th, td {
+                font-size: 1em;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h2>사이즈 차트</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>사이즈</th>
+            <th>가슴둘레 (cm)</th>
+            <th>어깨너비 (cm)</th>
+            <th>옷 길이 (cm)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>S</td>
+            <td>114</td>
+            <td>61</td>
+            <td>54</td>
+        </tr>
+        <tr>
+            <td>M</td>
+            <td>120</td>
+            <td>62</td>
+            <td>55</td>
+        </tr>
+        <tr>
+            <td>L</td>
+            <td>124</td>
+            <td>63</td>
+            <td>56</td>
+        </tr>
+        <tr>
+            <td>XL</td>
+            <td>128</td>
+            <td>64</td>
+            <td>57</td>
+        </tr>
+        <tr>
+            <td>2XL</td>
+            <td>132</td>
+            <td>65</td>
+            <td>58</td>
+        </tr>
+        <tr>
+            <td>3XL</td>
+            <td>135</td>
+            <td>66</td>
+            <td>59</td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>`;
+
+    navigator.clipboard.writeText(transformedText).then(function() {
+        alert('변환된 문구가 클립보드에 복사되었습니다.');
+    }, function() {
+        alert('클립보드 복사에 실패했습니다.');
+    });
+}
+
 
     // "구매 전 필독" 텍스트를 클립보드에 복사하는 기능
     function copyNoticeText() {
