@@ -82,8 +82,8 @@
 <div class="controls">
     <div class="controls">
         
-    <!-- <용어변환표> 버튼 추가 -->
-    <a id="googleSheetLink" href="https://docs.google.com/spreadsheets/d/1F4qL0OO3IBawb7hY1PKRNmF2aqGoYxlpNFP_cBA9Qxc/edit?usp=sharing" target="_blank">용어변환표</a>
+    <!-- "용어변환표" 버튼 -->
+    <button id="googleSheetButton" onclick="openGoogleSheet()">용어변환표</button>
 
     <label for="width">Width (px):</label>
     <input type="number" id="width" value="500">
@@ -109,6 +109,10 @@
 </div>
 
 <script>
+    // 구글 스프레드시트 열기
+    function openGoogleSheet() {
+        window.open("https://docs.google.com/spreadsheets/d/1F4qL0OO3IBawb7hY1PKRNmF2aqGoYxlpNFP_cBA9Qxc/edit?usp=sharing", "_blank");
+    }
     // 실시간으로 iframe에 HTML 내용을 반영
     const editor = document.getElementById('editor');
     const iframe = document.getElementById('preview').contentWindow.document;
