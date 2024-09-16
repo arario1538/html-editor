@@ -24,8 +24,10 @@ body {
 }
 
 textarea {
-    width: 50%;
+    width: 48%; /* 너비를 조금 줄여서 좌우 마진을 고려 */
     height: 100%;
+    margin-left: 10px; /* 좌측 마진 10px 추가 */
+    margin-right: 10px; /* 우측 마진 10px 추가 */
     border: none;
     padding: 20px;
     font-family: monospace;
@@ -37,7 +39,9 @@ textarea {
 }
 
 iframe {
-    width: 50%;
+    width: 48%; /* 너비를 조금 줄여서 좌우 마진을 고려 */
     height: 100%;
+    margin-left: 10px; /* 좌측 마진 10px 추가 */
+    margin-right: 10px; /* 우측 마진 10px 추가 */
     border: none;
 }
