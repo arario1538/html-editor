@@ -63,7 +63,7 @@
             margin-right: 10px;
         }
 
-        #copyButton {
+        #copyBasicButton, #copyTransformedButton {
             background-color: #007BFF;
             color: white;
             border: none;
@@ -72,7 +72,7 @@
             cursor: pointer;
         }
 
-        #copyButton:hover {
+        #copyBasicButton:hover, #copyTransformedButton:hover {
             background-color: #0056b3;
         }
     </style>
@@ -88,8 +88,11 @@
 
     <button onclick="resizeIframe()">Apply</button>
 
-    <!-- 추가된 "사이즈 정보 생성문-행열변환" 버튼 -->
-    <button id="copyButton" onclick="copyToClipboard()">사이즈 정보 생성문-행열변환</button>
+    <!-- 추가된 "사이즈 정보 생성문-기본" 버튼 -->
+    <button id="copyBasicButton" onclick="copyBasicText()">사이즈 정보 생성문-기본</button>
+
+    <!-- "사이즈 정보 생성문-행열변환" 버튼 -->
+    <button id="copyTransformedButton" onclick="copyTransformedText()">사이즈 정보 생성문-행열변환</button>
 </div>
 
 <div class="container">
@@ -118,11 +121,21 @@
         iframeElement.style.height = `${height}px`;
     }
 
-    // 클립보드에 텍스트 복사하는 기능
-    function copyToClipboard() {
-        const textToCopy = "<한글로 번역해서 행열을 바꾼 후 아래 html 코드에 데이터값 반영해서 html 코드로 작성해줘. 표 하단에 ⚠️ 사이즈 단위는 CM이며, 측정 방식에 따라 1~3cm 오차가 있을 수 있으며 이는 정상 범위에 해당합니다 라는 취지의 문구를 왼쪽 정렬로 하여 넣어줘. 표안에 cm는 넣지 말아줘.>";
-        navigator.clipboard.writeText(textToCopy).then(function() {
-            alert('문구가 클립보드에 복사되었습니다.');
+    // 기본 텍스트를 클립보드에 복사하는 기능
+    function copyBasicText() {
+        const basicText = "<한글로 번역해서 아래 html 코드에 데이터값 반영해서 html 코드로 작성해줘. 표 하단에 ⚠️ 사이즈 단위는 CM이며, 측정 방식에 따라 1~3cm 오차가 있을 수 있으며 이는 정상 범위에 해당합니다 라는 취지의 문구를 왼쪽 정렬로 하여 넣어줘. 표안에 cm는 넣지 말아줘.>";
+        navigator.clipboard.writeText(basicText).then(function() {
+            alert('기본 문구가 클립보드에 복사되었습니다.');
+        }, function() {
+            alert('클립보드 복사에 실패했습니다.');
+        });
+    }
+
+    // 변환된 텍스트를 클립보드에 복사하는 기능
+    function copyTransformedText() {
+        const transformedText = "<한글로 번역해서 행열을 바꾼 후 아래 html 코드에 데이터값 반영해서 html 코드로 작성해줘. 표 하단에 ⚠️ 사이즈 단위는 CM이며, 측정 방식에 따라 1~3cm 오차가 있을 수 있으며 이는 정상 범위에 해당합니다 라는 취지의 문구를 왼쪽 정렬로 하여 넣어줘. 표안에 cm는 넣지 말아줘.>";
+        navigator.clipboard.writeText(transformedText).then(function() {
+            alert('변환된 문구가 클립보드에 복사되었습니다.');
         }, function() {
             alert('클립보드 복사에 실패했습니다.');
         });
