@@ -276,7 +276,14 @@ function copyBasicText() {
 
 // 변환된 텍스트를 클립보드에 복사하는 기능
 function copyTransformedText() {
-    const transformedText = `첨부 이미지를 한글로 번역한 후 각각의 열을 행으로, 행을 열로 바꾸고 아래 html 코드에 데이터값 반영해서 html 코드로 작성해줘. 표 하단에 ⚠️ 사이즈는 CM 단위이며, 측정 방식에 따라 1~3cm의 오차가 발생할 수 있으며, 이는 정상 범위에 해당합니다 라는 취지의 문구를 왼쪽 정렬로 하여 넣어줘. 표안에 cm는 넣지 말아줘.  
+    const transformedText = `1. 첨부 이미지를 한글로 번역한 후 표로 그려주는데, 각 사이즈가 행(row)이 아닌 열(header)에 위치하도록 표를 전치해줘
+2. 열과 행을 바꿀 때, 각 열의 값이 해당 행으로 정확히 이동했는지 확인해줘
+3. 표 하단에 ⚠️ 사이즈는 CM 단위이며, 측정 방식에 따라 1~3cm의 오차가 발생할 수 있으며, 이는 정상 범위에 해당합니다 라는 취지의 문구를 왼쪽 정렬로 하여 넣어주고 style은 "text-align:left;margin-left: 6%;margin-right: 5%;" 적용해줘.
+4. 표안에 cm는 넣지 말아줘.
+5. 각 셀 안의 내용은 굵게 표시해줘.
+6. 아래 HTML 코드에 데이터값을 반영해서 html 코드로 작성해줘. 
+7. 위 명령을 순차적으로 실행해줘.
+작업이 끝난 후에는 위 1번, 2번, 3번, 4번, 5번이 제대로 실행되었는지 다시 확인해서 알려줘.
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -378,24 +385,6 @@ function copyTransformedText() {
             <td>124</td>
             <td>63</td>
             <td>56</td>
-        </tr>
-        <tr>
-            <td>XL</td>
-            <td>128</td>
-            <td>64</td>
-            <td>57</td>
-        </tr>
-        <tr>
-            <td>2XL</td>
-            <td>132</td>
-            <td>65</td>
-            <td>58</td>
-        </tr>
-        <tr>
-            <td>3XL</td>
-            <td>135</td>
-            <td>66</td>
-            <td>59</td>
         </tr>
     </tbody>
 </table>
