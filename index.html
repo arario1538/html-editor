@@ -109,10 +109,6 @@
 </div>
 
 <script>
-    // 구글 스프레드시트 열기
-    function openGoogleSheet() {
-        window.open("https://docs.google.com/spreadsheets/d/1F4qL0OO3IBawb7hY1PKRNmF2aqGoYxlpNFP_cBA9Qxc/edit?usp=sharing", "_blank");
-    }
     // 실시간으로 iframe에 HTML 내용을 반영
     const editor = document.getElementById('editor');
     const iframe = document.getElementById('preview').contentWindow.document;
@@ -132,6 +128,12 @@
         iframeElement.style.width = `${width}px`;
         iframeElement.style.height = `${height}px`;
     }
+
+    // 구글 스프레드시트 열기
+    function openGoogleSheet() {
+        window.open("https://docs.google.com/spreadsheets/d/1F4qL0OO3IBawb7hY1PKRNmF2aqGoYxlpNFP_cBA9Qxc/edit?usp=sharing", "_blank");
+    }
+  
 
 // 기본 텍스트를 클립보드에 복사하는 기능
 function copyBasicText() {
