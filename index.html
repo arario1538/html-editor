@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,10 +8,43 @@
 </head>
 <body>
     <div class="container">
+        <!-- px 길이 조정하는 입력 폼 추가 -->
+        <div class="controls">
+            <label for="width">Width (px):</label>
+            <input type="number" id="width" value="600">
+
+            <label for="height">Height (px):</label>
+            <input type="number" id="height" value="300">
+
+            <button onclick="resizeIframe()">Apply</button>
+        </div>
+
         <textarea id="editor" placeholder="Write your HTML code here"></textarea>
-        <iframe id="preview"></iframe>
+        <iframe id="preview" width="600" height="300"></iframe>
     </div>
 
     <script src="script.js"></script>
+
+    <script>
+        // 실시간으로 iframe에 HTML 내용을 반영
+        const editor = document.getElementById('editor');
+        const iframe = document.getElementById('preview').contentWindow.document;
+
+        editor.addEventListener('input', () => {
+            iframe.open();
+            iframe.write(editor.value);
+            iframe.close();
+        });
+
+        // 사용자가 입력한 값으로 iframe 크기 조정
+        function resizeIframe() {
+            const width = document.getElementById('width').value;
+            const height = document.getElementById('height').value;
+            const iframeElement = document.getElementById('preview');
+
+            iframeElement.style.width = `${width}px`;
+            iframeElement.style.height = `${height}px`;
+        }
+    </script>
 </body>
 </html>
