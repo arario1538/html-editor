@@ -4,33 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online HTML Editor</title>
-    <link rel="stylesheet" href="style.css">
     <style>
-        /* 컨테이너 스타일 */
-        .container {
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 20px;
-            gap: 10px;
+            justify-content: flex-start;
+            height: 100vh;
         }
 
-        /* 컨트롤 섹션 스타일 */
         .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            margin-bottom: 10px;
+            margin: 10px 0;
         }
 
         .controls label {
-            margin-right: 5px;
+            margin-right: 10px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+            height: 90%;
+            padding: 10px;
+            gap: 10px;
         }
 
         textarea {
-            width: 100%;
-            height: 300px;
+            width: 50%;
+            height: 100%;
             padding: 10px;
             border: 1px solid #ccc;
             font-family: monospace;
@@ -40,43 +48,37 @@
 
         iframe {
             border: 1px solid #ccc;
-            width: 100%;
-            height: 300px;
+            width: 50%;
+            height: 100%;
         }
 
-        /* 전체 페이지에 적절한 여백 추가 */
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            background-color: #f4f4f4;
+        .controls input {
+            width: 80px;
+            padding: 5px;
+            margin-right: 10px;
         }
 
+        .controls button {
+            padding: 5px 10px;
+        }
     </style>
 </head>
 <body>
 
+<div class="controls">
+    <label for="width">Width (px):</label>
+    <input type="number" id="width" value="600">
+
+    <label for="height">Height (px):</label>
+    <input type="number" id="height" value="300">
+
+    <button onclick="resizeIframe()">Apply</button>
+</div>
+
 <div class="container">
-    <!-- px 길이 조정하는 입력 폼 -->
-    <div class="controls">
-        <label for="width">Width (px):</label>
-        <input type="number" id="width" value="600" style="width: 80px;">
-
-        <label for="height">Height (px):</label>
-        <input type="number" id="height" value="300" style="width: 80px;">
-
-        <button onclick="resizeIframe()">Apply</button>
-    </div>
-
     <textarea id="editor" placeholder="Write your HTML code here"></textarea>
     <iframe id="preview" width="600" height="300"></iframe>
 </div>
-
-<script src="script.js"></script>
 
 <script>
     // 실시간으로 iframe에 HTML 내용을 반영
