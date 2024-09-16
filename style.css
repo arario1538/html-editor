@@ -8,11 +8,12 @@ body {
     align-items: center;
     height: 100vh;
     background-color: #f0f0f0;
+    min-height: 150vh; /* 최소 높이를 150vh로 설정하여 더 큰 화면에서도 충분한 세로 길이 확보 */
 }
 
 .container {
     width: 80%;
-    height: 90%;
+    height: 100%; /* 높이를 100%로 설정하여 부모 요소에 맞게 확장 */
     display: flex;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
