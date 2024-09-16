@@ -63,7 +63,7 @@
             margin-right: 10px;
         }
 
-        #copyBasicButton, #copyTransformedButton {
+        #copyBasicButton, #copyTransformedButton, #copyNoticeButton {
             background-color: #007BFF;
             color: white;
             border: none;
@@ -72,7 +72,7 @@
             cursor: pointer;
         }
 
-        #copyBasicButton:hover, #copyTransformedButton:hover {
+        #copyBasicButton:hover, #copyTransformedButton:hover, #copyNoticeButton:hover {
             background-color: #0056b3;
         }
     </style>
@@ -88,11 +88,14 @@
 
     <button onclick="resizeIframe()">Apply</button>
 
-    <!-- 추가된 "사이즈 정보 생성문-기본" 버튼 -->
+    <!-- "사이즈 정보 생성문-기본" 버튼 -->
     <button id="copyBasicButton" onclick="copyBasicText()">사이즈 정보 생성문-기본</button>
 
     <!-- "사이즈 정보 생성문-행열변환" 버튼 -->
     <button id="copyTransformedButton" onclick="copyTransformedText()">사이즈 정보 생성문-행열변환</button>
+
+    <!-- 추가된 "구매 전 필독" 버튼 -->
+    <button id="copyNoticeButton" onclick="copyNoticeText()">구매 전 필독</button>
 </div>
 
 <div class="container">
@@ -136,6 +139,95 @@
         const transformedText = "<한글로 번역해서 행열을 바꾼 후 아래 html 코드에 데이터값 반영해서 html 코드로 작성해줘. 표 하단에 ⚠️ 사이즈 단위는 CM이며, 측정 방식에 따라 1~3cm 오차가 있을 수 있으며 이는 정상 범위에 해당합니다 라는 취지의 문구를 왼쪽 정렬로 하여 넣어줘. 표안에 cm는 넣지 말아줘.>";
         navigator.clipboard.writeText(transformedText).then(function() {
             alert('변환된 문구가 클립보드에 복사되었습니다.');
+        }, function() {
+            alert('클립보드 복사에 실패했습니다.');
+        });
+    }
+
+    // "구매 전 필독" 텍스트를 클립보드에 복사하는 기능
+    function copyNoticeText() {
+        const noticeText = `
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>주문 전 꼭 읽어주세요!</title>
+<style>
+body {
+background-color: #ffffff; /* 배경을 흰색으로 설정 */
+font-family: 'Noto Sans KR', sans-serif;
+margin: 0;
+padding: 0 20px; /* 좌우 20px 패딩 추가 */
+}
+.notice-container {
+max-width: 450px; /* 가로 너비를 450px로 설정 */
+margin: 60px auto;
+background-color: #fff0f6; /* 부드러운 핑크톤 배경 */
+border-radius: 12px; /* 둥근 모서리 추가 */
+border: 1px solid #f7c8e0; /* 연한 핑크 테두리 */
+box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+padding: 40px 30px; /* 상하 40px, 좌우 30px 여백 설정 */
+text-align: center;
+}
+.notice-title {
+font-size: 32px;
+color: #d63384; /* 포인트 핑크 컬러 */
+margin-bottom: 25px;
+border-bottom: 2px solid #f7c8e0; /* 연한 핑크 하단 테두리 */
+padding-bottom: 10px;
+font-weight: bold;
+}
+.notice-content {
+font-size: 18px;
+color: #555555;
+line-height: 1.8;
+text-align: left;
+}
+.notice-content strong {
+color: #d63384; /* 강한 핑크로 강조 */
+}
+.notice-content .important {
+color: #e63946; /* 빨간색 경고 메시지 */
+font-weight: bold;
+margin-top: 20px;
+}
+.notice-content p {
+margin-bottom: 20px;
+}
+@media (max-width: 500px) {
+body {
+padding: 0 25px; /* 화면 너비가 500px 이하일 때 좌우 여백을 10px로 설정 */
+}
+.notice-container {
+padding: 20px 15px; /* 상하 20px, 좌우 15px 여백 설정 */
+}
+.notice-title {
+font-size: 28px;
+}
+.notice-content {
+font-size: 16px;
+}
+}
+</style>
+</head>
+<body>
+
+<div class="notice-container">
+    <div class="notice-title">구매 전 꼭 읽어주세요!</div>
+    <div class="notice-content">
+        <p>본 제품은 <strong>1+1 구성</strong>으로, 주문하신 색상 및 사이즈가 하나 더 배송됩니다.</p>
+        <p>다른 색상이나 사이즈를 원하실 경우, 주문 시 배송 메시지란에 꼭 기재해 주세요.</p>
+        <p>예시: 핑크 M 사이즈 1개, 블루 XL 사이즈 1개</p>
+        <div class="important">* 별도 요청이 없을 경우, 같은 색상과 사이즈로 배송되니 꼭 확인 부탁드립니다!</div>
+    </div>
+</div>
+
+</body>
+</html>
+`;
+        navigator.clipboard.writeText(noticeText).then(function() {
+            alert('구매 전 필독 문구가 클립보드에 복사되었습니다.');
         }, function() {
             alert('클립보드 복사에 실패했습니다.');
         });
