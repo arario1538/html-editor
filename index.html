@@ -96,6 +96,9 @@
 
     <!-- 추가된 "구매 전 필독" 버튼 -->
     <button id="copyNoticeButton" onclick="copyNoticeText()">구매 전 필독</button>
+
+    <!-- "용어변환표" 버튼 -->
+    <button id="googleSheetButton" onclick="openGoogleSheet()">용어변환표</button> /* 버튼 추가 */
 </div>
 
 <div class="container">
@@ -122,6 +125,11 @@
 
         iframeElement.style.width = `${width}px`;
         iframeElement.style.height = `${height}px`;
+    }
+
+    // 구글 스프레드시트 열기
+    function openGoogleSheet() {
+        window.open("https://docs.google.com/spreadsheets/d/1F4qL0OO3IBawb7hY1PKRNmF2aqGoYxlpNFP_cBA9Qxc/edit?usp=sharing", "_blank");
     }
 
 // 기본 텍스트를 클립보드에 복사하는 기능
