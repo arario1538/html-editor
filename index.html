@@ -107,6 +107,9 @@
 
     <!-- "용어변환표" 버튼 -->
     <button id="googleSheetButton" onclick="openGoogleSheet()">용어변환표</button>
+
+    <!-- "메모" 버튼 -->
+    <button id="googleWordButton" onclick="openGoogleWord()">메모</button>
 </div>
 
 <div class="container">
@@ -138,6 +141,11 @@
     // 구글 스프레드시트 열기
     function openGoogleSheet() {
         window.open("https://docs.google.com/spreadsheets/d/1F4qL0OO3IBawb7hY1PKRNmF2aqGoYxlpNFP_cBA9Qxc/edit?usp=sharing", "_blank");
+    }
+
+    // 구글 워드 열기
+    function openGoogleWord() {
+        window.open("https://docs.google.com/document/d/1Dv5JFy5LMOqJkL1AKDLw1Pz9C7mmMDyV31IHniINIhQ/edit?usp=sharing", "_blank");
     }
 
 // 기본 텍스트를 클립보드에 복사하는 기능
