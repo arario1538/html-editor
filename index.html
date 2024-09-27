@@ -19,6 +19,9 @@
 
         .controls {
             margin: 10px 0;
+            display: flex;
+            flex-wrap: wrap; /* 버튼과 입력란들이 한 줄에 꽉 차면 다음 줄로 넘어가게 설정 */
+            gap: 10px; /* 버튼과 입력란 사이의 간격 */
         }
 
         .controls label {
@@ -32,12 +35,12 @@
             align-items: flex-start;
             width: 100%;
             height: 90%;
-            padding: 10px 20px; /* 상하 10px, 좌우 20px 패딩 추가 */
+            padding: 10px 20px;
             gap: 10px;
         }
 
         textarea {
-            width: calc(50% - 40px); /* 좌우 마진을 고려하여 너비 조정 */
+            width: calc(50% - 40px);
             height: 100%;
             margin-top: 0px;
             margin-right: 0;
@@ -52,20 +55,18 @@
 
         iframe {
             border: 1px solid #ccc;
-            width: calc(50% - 40px); /* 좌우 마진을 고려하여 너비 조정 */
+            width: calc(50% - 40px);
             height: 100%;
-            margin: 0 20px;         /* 좌우 마진 20px 추가 */
+            margin: 0 20px;
         }
 
         .controls input {
             width: 80px;
             padding: 5px;
-            margin-right: 10px;
         }
 
         .controls button {
             padding: 5px 10px;
-            margin-right: 10px;
         }
 
         #copyBasicButton, #copyTransformedButton, #copyNoticeButton {
@@ -83,13 +84,13 @@
 
         /* 찾기/바꾸기 관련 스타일 추가 */
         .find-replace-container {
-            margin-top: 20px;
+            display: flex; /* 가로로 배치 */
+            gap: 10px;
         }
 
         .find-replace-container input {
             width: 150px;
             padding: 5px;
-            margin-right: 10px;
         }
 
     </style>
@@ -122,16 +123,17 @@
 
     <!-- "메모" 버튼 -->
     <button id="googleWordButton" onclick="openGoogleWord()">메모</button>
-</div>
-<!-- 찾기/바꾸기 기능 -->
-<div class="find-replace-container">
-    <label for="findText">찾기:</label>
-    <input type="text" id="findText" placeholder="찾을 단어">
-    
-    <label for="replaceText">바꾸기:</label>
-    <input type="text" id="replaceText" placeholder="바꿀 단어">
-    
-    <button onclick="findAndReplace()">찾기/바꾸기</button>
+
+    <!-- 찾기/바꾸기 기능 -->
+    <div class="find-replace-container">
+        <label for="findText">찾기:</label>
+        <input type="text" id="findText" placeholder="찾을 단어">
+        
+        <label for="replaceText">바꾸기:</label>
+        <input type="text" id="replaceText" placeholder="바꿀 단어">
+        
+        <button onclick="findAndReplace()">찾기/바꾸기</button>
+    </div>
 </div>
 
 <div class="container">
