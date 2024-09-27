@@ -699,7 +699,7 @@ font-size: 16px;
 </style>
 `;
 
-    navigator.clipboard.writeText(transformedText).then(function() {
+    navigator.clipboard.writeText(ClipboardText).then(function() {
         alert('변환된 문구가 클립보드에 복사되었습니다.');
     }, function() {
         alert('클립보드 복사에 실패했습니다.');
