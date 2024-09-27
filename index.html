@@ -80,18 +80,6 @@
         #copyBasicButton:hover, #copyTransformedButton:hover, #copyNoticeButton:hover {
             background-color: #0056b3;
         }
-
-        /* 찾기/바꾸기 관련 스타일 추가 */
-        .find-replace-container {
-            display: flex; /* 가로로 배치 */
-            gap: 10px;
-        }
-
-        .find-replace-container input {
-            width: 150px;
-            padding: 5px;
-        }
-
     </style>
 </head>
 <body>
@@ -122,17 +110,8 @@
 
     <!-- "메모" 버튼 -->
     <button id="googleWordButton" onclick="openGoogleWord()">메모</button>
-    
-    <!-- 찾기/바꾸기 기능 -->
-    <div class="find-replace-container">
-        <label for="findText">찾기:</label>
-        <input type="text" id="findText" placeholder="찾을 단어">
-        
-        <label for="replaceText">바꾸기:</label>
-        <input type="text" id="replaceText" placeholder="바꿀 단어">
-        
-        <button onclick="findAndReplace()">찾기/바꾸기</button>
-    </div>
+</div>
+
 <div class="container">
     <textarea id="editor" placeholder="Write your HTML code here"></textarea>
     <iframe id="preview" width="500" height="1000"></iframe>
@@ -155,13 +134,11 @@
         const height = document.getElementById('height').value;
         const iframeElement = document.getElementById('preview');
 
-        iframeElement.style.width = ${width}px;
-        iframeElement.style.height = ${height}px;
+        iframeElement.style.width = `${width}px`;
+        iframeElement.style.height = `${height}px`;
     }
 
-
-
-// 구글 스프레드시트 열기
+    // 구글 스프레드시트 열기
     function openGoogleSheet() {
         window.open("https://docs.google.com/spreadsheets/d/1F4qL0OO3IBawb7hY1PKRNmF2aqGoYxlpNFP_cBA9Qxc/edit?usp=sharing", "_blank");
     }
@@ -173,7 +150,7 @@
 
 // 기본 텍스트를 클립보드에 복사하는 기능
 function copyBasicText() {
-    const basicText = 1. 첨부 이미지를 한글로 번역한 후 표로 그려줘
+    const basicText = `1. 첨부 이미지를 한글로 번역한 후 표로 그려줘
 2. 표 하단에 ⚠️ 사이즈는 CM 단위이며, 측정 방식에 따라 1~3cm의 오차가 발생할 수 있으며, 이는 정상 범위에 해당합니다 라는 취지의 문구를 왼쪽 정렬로 하여 넣어주고 class는 "size-note", style은 "text-align:left;margin-left: 6%;margin-right: 5%;" 적용해줘.
 3. 표안에 cm는 넣지 말아줘.
 4. 각 셀 안의 내용은 굵게 표시해줘.
@@ -286,7 +263,7 @@ function copyBasicText() {
 </table>
 
 </body>
-</html>;
+</html>`;
     
     navigator.clipboard.writeText(basicText).then(function() {
         alert('기본 문구가 클립보드에 복사되었습니다.');
@@ -298,7 +275,7 @@ function copyBasicText() {
 
 // 변환된 텍스트를 클립보드에 복사하는 기능
 function copyTransformedText() {
-    const transformedText = 1. 첨부 이미지를 한글로 번역한 후 표로 그려주는데, 각 사이즈가 행(row)이 아닌 열(header)에 위치하도록 표를 전치해줘
+    const transformedText = `1. 첨부 이미지를 한글로 번역한 후 표로 그려주는데, 각 사이즈가 행(row)이 아닌 열(header)에 위치하도록 표를 전치해줘
 2. 열과 행을 바꿀 때, 각 열의 값이 해당 행으로 정확히 이동했는지 확인해줘
 3. 표 하단에 ⚠️ 사이즈는 CM 단위이며, 측정 방식에 따라 1~3cm의 오차가 발생할 수 있으며, 이는 정상 범위에 해당합니다 라는 취지의 문구를 왼쪽 정렬로 하여 넣어주고 class는 "size-note", style은 "text-align:left;margin-left: 6%;margin-right: 5%;" 적용해줘.
 4. 표안에 cm는 넣지 말아줘.
@@ -414,7 +391,7 @@ function copyTransformedText() {
 </table>
 
 </body>
-</html>;
+</html>`;
 
     navigator.clipboard.writeText(transformedText).then(function() {
         alert('변환된 문구가 클립보드에 복사되었습니다.');
@@ -426,7 +403,7 @@ function copyTransformedText() {
 
     // "구매 전 필독(의류)" 텍스트를 클립보드에 복사하는 기능
     function copyNoticeText1() {
-        const noticeText1 = 
+        const noticeText1 = `
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -505,7 +482,7 @@ font-size: 16px;
 
 </body>
 </html>
-;
+`;
         navigator.clipboard.writeText(noticeText1).then(function() {
             alert('구매 전 필독(의류) 문구가 클립보드에 복사되었습니다.');
         }, function() {
@@ -515,7 +492,7 @@ font-size: 16px;
 
         // "구매 전 필독(신발)" 텍스트를 클립보드에 복사하는 기능
     function copyNoticeText2() {
-        const noticeText2 = 
+        const noticeText2 = `
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -594,31 +571,12 @@ font-size: 16px;
 
 </body>
 </html>
-;
+`;
         navigator.clipboard.writeText(noticeText2).then(function() {
             alert('구매 전 필독(신발) 문구가 클립보드에 복사되었습니다.');
         }, function() {
             alert('클립보드 복사에 실패했습니다.');
         });
-    }
-
-   // 찾기/바꾸기 기능 구현
-    function findAndReplace() {
-        const findText = document.getElementById('findText').value;
-        const replaceText = document.getElementById('replaceText').value;
-        const editorContent = editor.value;
-
-        if (findText) {
-            const updatedContent = editorContent.split(findText).join(replaceText);
-            editor.value = updatedContent;
-
-            // iframe에 실시간 반영
-            iframe.open();
-            iframe.write(editor.value);
-            iframe.close();
-        } else {
-            alert('찾을 단어를 입력하세요.');
-        }
     }
 </script>
 
