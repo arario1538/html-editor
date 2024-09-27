@@ -68,7 +68,7 @@
             margin-right: 10px;
         }
 
-        #copyBasicButton, #copyTransformedButton, #copyNoticeButton {
+        #copyBasicButton, #copyTransformedButton, #copyNoticeButton, #findReplaceButton {
             background-color: #007BFF;
             color: white;
             border: none;
@@ -77,8 +77,44 @@
             cursor: pointer;
         }
 
-        #copyBasicButton:hover, #copyTransformedButton:hover, #copyNoticeButton:hover {
+        #copyBasicButton:hover, #copyTransformedButton:hover, #copyNoticeButton:hover, #findReplaceButton:hover {
             background-color: #0056b3;
+        }
+
+                /* 모달 창 스타일 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -110,11 +146,29 @@
 
     <!-- "메모" 버튼 -->
     <button id="googleWordButton" onclick="openGoogleWord()">메모</button>
+
+    <!-- "찾기/바꾸기" 버튼 -->
+    <button id="findReplaceButton" onclick="openFindReplaceModal()">찾기/바꾸기</button>
 </div>
 
 <div class="container">
     <textarea id="editor" placeholder="Write your HTML code here"></textarea>
     <iframe id="preview" width="500" height="1000"></iframe>
+</div>
+
+<!-- 모달 창 -->
+<div id="findReplaceModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeFindReplaceModal()">×</span>
+        <h3>찾기/바꾸기</h3>
+        <label for="findText">찾기:</label>
+        <input type="text" id="findText" placeholder="찾을 단어"><br><br>
+        
+        <label for="replaceText">바꾸기:</label>
+        <input type="text" id="replaceText" placeholder="바꿀 단어"><br><br>
+        
+        <button onclick="findAndReplace()">찾기/바꾸기</button>
+    </div>
 </div>
 
 <script>
@@ -577,6 +631,35 @@ font-size: 16px;
         }, function() {
             alert('클립보드 복사에 실패했습니다.');
         });
+    }
+
+    // 찾기/바꾸기 기능 구현
+    function findAndReplace() {
+        const findText = document.getElementById('findText').value;
+        const replaceText = document.getElementById('replaceText').value;
+        const editorContent = editor.value;
+
+        if (findText) {
+            const updatedContent = editorContent.split(findText).join(replaceText);
+            editor.value = updatedContent;
+
+            // iframe에 실시간 반영
+            iframe.open();
+            iframe.write(editor.value);
+            iframe.close();
+        } else {
+            alert('찾을 단어를 입력하세요.');
+        }
+    }
+
+    // 모달 열기
+    function openFindReplaceModal() {
+        document.getElementById('findReplaceModal').style.display = 'block';
+    }
+
+    // 모달 닫기
+    function closeFindReplaceModal() {
+        document.getElementById('findReplaceModal').style.display = 'none';
     }
 </script>
 
