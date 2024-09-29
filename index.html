@@ -127,6 +127,8 @@
     <input type="number" id="height" value="1000">
 
     <button onclick="resizeIframe()">Apply</button>
+    <!-- "미리캔버스" 버튼 -->
+    <button id="miriButton" onclick="openmiri()">미리캔버스</button>
 
     <!-- "사이즈정보-기본" 버튼 -->
     <button id="copyBasicButton" onclick="copyBasicText()">사이즈 정보</button>
@@ -175,6 +177,11 @@
 </div>
 
 <script>
+    // 미리캔버스 열기
+    function openmiri() {
+        window.open("https://www.miricanvas.com/v2/design/13nkvez", "_blank");
+    }
+    
     // 실시간으로 iframe에 HTML 내용을 반영
     const editor = document.getElementById('editor');
     const iframe = document.getElementById('preview').contentWindow.document;
@@ -194,7 +201,7 @@
         iframeElement.style.width = `${width}px`;
         iframeElement.style.height = `${height}px`;
     }
-
+    
     // 구글 스프레드시트 열기
     function openGoogleSheet() {
         window.open("https://docs.google.com/spreadsheets/d/1F4qL0OO3IBawb7hY1PKRNmF2aqGoYxlpNFP_cBA9Qxc/edit?usp=sharing", "_blank");
