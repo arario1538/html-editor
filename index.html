@@ -14,6 +14,22 @@
             font-size: 13px;
             cursor: pointer;
         }
+        #VvicButton {
+            background-color: #F96388; 
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+        #1688Button {
+            background-color: #FF7945; 
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 13px;
+            cursor: pointer;
+        }
     </style>
     <title>Online HTML Editor</title>
     <style>
@@ -162,6 +178,12 @@
     <button id="findReplaceButton" onclick="openFindReplaceModal()">찾기/바꾸기</button>
     <!-- "미리캔버스" 버튼 -->
     <button id="miriButton" onclick="openmiri()">미리캔버스</button>
+    <!-- "ChatGpt" 버튼 -->
+    <button id="ChatGptButton" onclick="openChatGpt()">ChatGpt</button>
+    <!-- "Vvic" 버튼 -->
+    <button id="VvicButton" onclick="openVvic()">VVIC</button>
+    <!-- "1688" 버튼 -->
+    <button id="1688Button" onclick="open1688()">1688</button>
     <!-- "버튼1" 버튼 -->
     <button id="copyhtmlButton" onclick="copyToClipboard()">버튼1</button>
     <!-- "버튼2" 버튼 -->
@@ -192,6 +214,18 @@
     // 미리캔버스 열기
     function openmiri() {
         window.open("https://www.miricanvas.com/v2/design/13pr065", "_blank");
+    }
+    // chatgpt 열기
+    function openChatGpt() {
+        window.open("https://chatgpt.com", "_blank");
+    }
+    // vvic 열기
+    function openVvic() {
+        window.open("https://vvic.com", "_blank");
+    }
+    // 1688 열기
+    function open1688() {
+        window.open("https://1688.com", "_blank");
     }
     
     // 실시간으로 iframe에 HTML 내용을 반영
